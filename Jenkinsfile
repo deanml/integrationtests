@@ -33,7 +33,6 @@ pipeline {
                         }
                 }
             }
-
         }
 
         stage('Run Tests') {
@@ -53,5 +52,5 @@ pipeline {
                 }
             }
         }
-
+    }
 }
