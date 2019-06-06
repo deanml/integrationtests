@@ -18,6 +18,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
     stages {
+
         stage('Static Analysis') {
             environment {
                 scannerHome = tool 'sonarscanner'
@@ -30,9 +31,9 @@ pipeline {
                         withSonarQubeEnv('SonarQube-Prod') {
                         sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectVersion=${BUILD_NUMBER}"
                         }
-                    }
                 }
             }
+
         }
 
         stage('Run Tests') {
@@ -52,5 +53,5 @@ pipeline {
                 }
             }
         }
-    }
+
 }
