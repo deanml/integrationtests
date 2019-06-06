@@ -24,7 +24,7 @@ pipeline {
                 scannerHome = tool 'sonarscanner'
             }
             when {
-                branch 'develop'
+                branch 'master'
             }
             steps {
                 script {
