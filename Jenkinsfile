@@ -41,7 +41,6 @@ pipeline {
             }
         }
 
-
         stage('Conditional Approval') {
             when {
                 branch 'develop'
@@ -53,4 +52,5 @@ pipeline {
                 }
             }
         }
+    }
 }
