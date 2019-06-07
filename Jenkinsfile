@@ -35,13 +35,25 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
+        stage('Build') {
             steps {
                 sh "echo hi"
             }
         }
 
-        stage('Conditional Approval') {
+        stage('Unit Tests and Coverage') {
+            steps {
+                sh "echo hi"
+            }
+        }
+
+        stage('Create Docker Image') {
+            steps {
+                sh "echo hi"
+            }
+        }
+
+        stage('Approval and Upload') {
             when {
                 branch 'develop'
                 expression {currentBuild.result == 'UNSTABLE'}
