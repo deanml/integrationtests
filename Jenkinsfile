@@ -64,7 +64,6 @@ pipeline {
 
         stage('Approval and Upload') {
             when {
-                branch 'develop'
                 expression {currentBuild.result == 'UNSTABLE'}
             }
             steps {
@@ -72,6 +71,12 @@ pipeline {
                     input message:'Do you want to approve artifacts for the OS build and upload the built artifacts?'
                 }
             }
+            post {
+                cleanup {
+                    deleteDir()
+                }
+            }
         }
     }
 }
+
