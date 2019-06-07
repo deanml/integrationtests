@@ -59,6 +59,8 @@ pipeline {
         stage('Create Artifact') {
             steps {
                 sh "echo hi"
+                echo 'Testing failed!'
+                currentBuild.result = 'UNSTABLE'
             }
         }
 
