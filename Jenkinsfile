@@ -17,6 +17,12 @@ pipeline {
         disableConcurrentBuilds()
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
+
+    tools {
+        maven 'Maven3.6.1'
+        jdk 'jdk1.9'
+    }
+
     stages {
 
         stage('Static Analysis') {
@@ -37,13 +43,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "echo hi"
+                sh "mvn clean compile"
             }
         }
 
         stage('Unit Tests and Coverage') {
             steps {
-                sh "echo hi"
+                sh "mvn test"
             }
         }
 
