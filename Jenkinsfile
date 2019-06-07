@@ -18,11 +18,6 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10'))
     }
 
-    tools {
-        maven 'Maven3.6.1'
-        jdk 'jdk1.9'
-    }
-
     stages {
 
         stage('Static Analysis') {
@@ -42,12 +37,20 @@ pipeline {
         }
 
         stage('Build') {
+            tools {
+                maven 'Maven3.6.1'
+                jdk 'jdk1.9'
+            }
             steps {
                 sh "mvn clean compile"
             }
         }
 
         stage('Unit Tests and Coverage') {
+            tools {
+                maven 'Maven3.6.1'
+                jdk 'jdk1.9'
+            }
             steps {
                 sh "mvn test"
             }
