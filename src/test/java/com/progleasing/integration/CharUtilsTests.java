@@ -33,4 +33,12 @@ public class CharUtilsTests {
         Assert.assertEquals(result, character);
 
     }
+
+    @Test(dataProvider = "ValidDataProvider")
+    public void ASCIIToCharTestFailing(final char character, final int ascii) {
+
+        char result = CharUtils.ASCIIToChar(ascii);
+        Assert.assertNotEquals(result, character);
+
+    }
 }
