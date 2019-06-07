@@ -20,6 +20,16 @@ pipeline {
 
     stages {
 
+        stage('Build') {
+            tools {
+                maven 'Maven3.6.1'
+                jdk 'jdk1.9'
+            }
+            steps {
+                sh "mvn clean compile"
+            }
+        }
+
         stage('Static Analysis') {
             environment {
                 scannerHome = tool 'sonarscanner'
@@ -36,16 +46,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            tools {
-                maven 'Maven3.6.1'
-                jdk 'jdk1.9'
-            }
-            steps {
-                sh "mvn clean compile"
-            }
-        }
-
         stage('Unit Tests and Coverage') {
             tools {
                 maven 'Maven3.6.1'
@@ -56,7 +56,7 @@ pipeline {
             }
         }
 
-        stage('Create Docker Image') {
+        stage('Create Artifact') {
             steps {
                 sh "echo hi"
             }
@@ -64,6 +64,9 @@ pipeline {
 
         stage('Approval and Upload') {
             when {
+                not {
+                    branch 'develop'
+                }
                 expression {currentBuild.result == 'UNSTABLE'}
             }
             steps {
