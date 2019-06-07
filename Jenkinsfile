@@ -60,7 +60,7 @@ pipeline {
             steps {
                 sh "echo hi"
                 echo 'Testing failed!'
-                currentBuild.result = 'UNSTABLE'
+                script { currentBuild.result = 'UNSTABLE' }
             }
         }
 
