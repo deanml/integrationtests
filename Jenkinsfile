@@ -53,18 +53,19 @@ pipeline {
             }
             steps {
                 sh "mvn test"
-            }
-        }
-
-        stage('Create Artifact') {
-            steps {
-                sh "echo hi"
                 echo 'Testing failed!'
                 script { currentBuild.result = 'UNSTABLE' }
             }
         }
 
-        stage('Approval and Upload') {
+        stage('Create Artifact') {
+            steps {
+                sh "echo do the steps to create your artifacts here"
+
+            }
+        }
+
+        stage('Publish Artifact') {
             when {
                 not {
                     branch 'develop'
