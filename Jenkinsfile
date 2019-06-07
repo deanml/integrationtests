@@ -1,15 +1,8 @@
 // Establish some constants for the build
 def version = "1.0.${BUILD_NUMBER}"
-def LOG_LEVEL_VERB = "silly"
-def DONTUSE__REGISTRY = "--registry=http://npmjs.control4.com:5984"
-def NPM_CACHE = "--cache=npm-cache"
-def NPM_TMP = "--tmp=npm-tmp"
 def RELEASE_VERSION = "3.0.0"
 def REVISION_NUMBER = "UNKNOWN"
 def BUILD_VERSION = "UNKNOWN"
-def BROKER_VERSION = "UNKNOWN"
-def LINUX_NODE_VERSION = "6.10.3"
-def remote = [:]
 
 pipeline {
     agent any
@@ -35,7 +28,7 @@ pipeline {
                 scannerHome = tool 'sonarscanner'
             }
             when {
-                branch 'master'
+                branch 'develop'
             }
             steps {
                 script {
