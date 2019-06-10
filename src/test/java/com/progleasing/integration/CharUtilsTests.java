@@ -1,6 +1,6 @@
 package com.progleasing.integration;
 
-import com.progleasing.integration.CharUtils;
+import com.progleasing.utils.CharUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

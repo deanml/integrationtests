@@ -1,4 +1,4 @@
-package com.progleasing.integration;
+package com.progleasing.utils;
 
 public class CharUtils {
     /**
