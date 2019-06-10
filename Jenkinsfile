@@ -47,7 +47,7 @@ pipeline {
             steps {
                 sh "mvn test"
                 echo 'Testing failed!'
-                script { currentBuild.result = 'UNSTABLE' }
+                // script { currentBuild.result = 'UNSTABLE' }
             }
         }
 
